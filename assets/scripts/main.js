@@ -48,9 +48,17 @@ async function fetchRecipes() {
       fetch(recipes[i])
       .then(response=>response.json())
       .then(data => recipeData[i] = data)
-      .catch(err => reject(false));
+      .catch((err) => reject(false));
     }
-    resolve(true);
+    console.log(recipeData);
+    console.log(Object.keys(recipeData).length);
+    console.log(recipes.length);
+    if (Object.keys(recipeData).length == recipes.length) {
+      resolve(true);
+    }
+    else {
+      console.log('Error');
+    }
     return;
   });
 }
