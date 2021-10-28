@@ -47,11 +47,11 @@ async function fetchRecipes() {
     for (let i = 0; i < recipes.length; i++) {
       fetch(recipes[i])
       .then(response=>response.json())
-      .then(data => recipeData[i] = data)
+      .then(data => {recipeData[recipes[i]] = data;
+      if(Object.keys(recipeData).length == recipes.length){
+          resolve(true);}
+        })
       .catch((err) => reject(false));
-      if(i == 2){
-        resolve(true);
-      }
     }
   });
 }
@@ -62,8 +62,13 @@ function createRecipeCards() {
   // files with the recipeData Object above. Make sure you only display the 
   // three recipes we give you, you'll use the bindShowMore() function to
   // show any others you've added when the user clicks on the "Show more" button.
-
+  let main_html = document.querySelector("main")
   // Part 1 Expose - TODO
+  Object.keys(recipeData).forEach(key => {
+    //RecipeCard.data = recipeData[key];
+    //main_html.appendChild(RecipeCard);
+  });
+    
   
 
 }
