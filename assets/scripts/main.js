@@ -44,9 +44,9 @@ async function fetchRecipes() {
 
     // Part 1 Expose - TODO
     for (let i = 0; i < recipes.length; i++) {
-      console.log("loop");
-      fetch(recipes[i]).then(response=>response.json()).then(data => console.log(data));
+      fetch(recipes[i]).then(response=>response.json()).then(data => recipeData[i] = data);
     }
+    console.log(recipeData);
   });
 }
 
