@@ -19,6 +19,7 @@ window.addEventListener('DOMContentLoaded', init);
 async function init() {
   // fetch the recipes and wait for them to load
   let fetchSuccessful = await fetchRecipes();
+  console.log(recipeData);
   // if they didn't successfully load, quit the function
   if (!fetchSuccessful) {
     console.log('Recipe fetch unsuccessful');
@@ -44,9 +45,13 @@ async function fetchRecipes() {
 
     // Part 1 Expose - TODO
     for (let i = 0; i < recipes.length; i++) {
-      fetch(recipes[i]).then(response=>response.json()).then(data => recipeData[i] = data);
+      fetch(recipes[i])
+      .then(response=>response.json())
+      .then(data => recipeData[i] = data)
+      .catch(err => reject(false));
     }
-    console.log(recipeData);
+    resolve(true);
+    return;
   });
 }
 
