@@ -49,17 +49,10 @@ async function fetchRecipes() {
       .then(response=>response.json())
       .then(data => recipeData[i] = data)
       .catch((err) => reject(false));
+      if(i == 2){
+        resolve(true);
+      }
     }
-    console.log(recipeData);
-    console.log(Object.keys(recipeData).length);
-    console.log(recipes.length);
-    if (Object.keys(recipeData).length == recipes.length) {
-      resolve(true);
-    }
-    else {
-      console.log('Error');
-    }
-    return;
   });
 }
 
