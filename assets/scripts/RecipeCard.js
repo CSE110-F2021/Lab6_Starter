@@ -1,8 +1,11 @@
 class RecipeCard extends HTMLElement {
   constructor() {
     // Part 1 Expose - TODO
+    super();
 
     // You'll want to attach the shadow DOM here
+    this.shadow = this.attachShadow({mode: 'open'});
+
   }
 
   set data(data) {
@@ -98,8 +101,25 @@ class RecipeCard extends HTMLElement {
 
     // Make sure to attach your root element and styles to the shadow DOM you
     // created in the constructor()
+    this.shadow.appendChild(card);
+    this.shadow.appendChild(styleElem);
+    
+  
 
     // Part 1 Expose - TODO
+
+    console.log(data);
+
+    //create the img part of the card by scraping json data
+    const recipeImage = document.createElement('img');
+    recipeImage.src = "https://joyfoodsunshine.com/wp-content/uploads/2018/02/best-chocolate-chip-cookies-recipe-1.jpg";
+    //recipeImage.src = getImageUrl(data);
+    card.appendChild(recipeImage);
+
+    //create the title part of the card
+
+
+    
   }
 }
 
@@ -145,6 +165,21 @@ function getUrl(data) {
   };
   return null;
 }
+
+//function similar to getUrl to get the image url rather than the article url
+function getImageUrl(data) {
+  if (data.image) return data.image.url;
+  if (data['@graph']) {
+    for (let i = 0; i < data['@graph'].length; i++) {
+      if (data['@graph'][i]['@type'] == 'ImageObject') return data['@graph'][i]['url'];
+    }
+  };
+  return null;
+}
+
+
+
+
 
 /**
  * Similar to getUrl(), this function extracts the organizations name from the

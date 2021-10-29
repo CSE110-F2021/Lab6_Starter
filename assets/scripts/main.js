@@ -24,6 +24,7 @@ async function init() {
     console.log('Recipe fetch unsuccessful');
     return;
   };
+
   // Add the first three recipe cards to the page
   createRecipeCards();
   // Make the "Show more" button functional
@@ -76,8 +77,18 @@ function createRecipeCards() {
 
   // Part 1 Expose - TODO
   for (const url in recipeData) {
-    console.log(`${url}: ${recipeData[url]}`);
+    //console.log(`${url}: ${recipeData[url]}`);
+
+    const recipeCard = document.createElement('recipe-card');
+    recipeCard.data = recipeData[url];
+
+    //get the element of main and append new recipeCard to main.
+    document.querySelector('main').appendChild(recipeCard);
+
+    
   }
+
+
 }
 
 function bindShowMore() {
