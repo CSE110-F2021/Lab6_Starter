@@ -108,9 +108,6 @@ class RecipeCard extends HTMLElement {
     var mainImg = document.createElement('img');
     mainImg.setAttribute('src', searchForKey(data, "thumbnailUrl"));
 
-    // var url = document.createElement('url');
-    // url.setAttribute('url-name', getUrl(data));
-
     var title = document.createElement('p');
     title.className = "title";
     var link = document.createElement('a');
@@ -123,9 +120,6 @@ class RecipeCard extends HTMLElement {
     var org = document.createElement('p');
     org.className = "organization";
     org.appendChild(document.createTextNode(getOrganization(data)));
-    // org.setAttribute("org-name", getOrganization(data));
-
-
 
     var rating = document.createElement('div');
     rating.className = "rating";

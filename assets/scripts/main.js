@@ -61,8 +61,6 @@ async function fetchRecipes() {
           console.log(Object.keys(recipeData).length);
           if (Object.keys(recipeData).length == recipes.length) {
             console.log("STOP");
-            // console.log(data);
-            // console.log(recipeData[recipes[i]]);
             return resolve(true);
           }
         });
