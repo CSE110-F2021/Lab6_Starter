@@ -107,13 +107,13 @@ class RecipeCard extends HTMLElement {
     }
     //console.log(thumbnail);
     image.setAttribute('src', image_link);
-    let name = searchForKey(data, 'headline');
+    let recipe_name = searchForKey(data, 'headline');
     
-    if(name == undefined){
-      name = searchForKey(data, 'name');
+    if(recipe_name == undefined){
+      recipe_name = searchForKey(data, 'recipe_name');
     }
-    //console.log(name);
-    image.setAttribute('alt', name);
+    //console.log(recipe_name);
+    image.setAttribute('alt', recipe_name);
 
     card.appendChild(image);
     
@@ -123,7 +123,7 @@ class RecipeCard extends HTMLElement {
     title.setAttribute('class', 'title');
 
     let title_link = document.createElement('a');
-    title_link.innerHTML = name;
+    title_link.innerHTML = recipe_name;
     title_link.setAttribute('href', getUrl(data));
 
     //console.log(getUrl(data));
@@ -212,7 +212,7 @@ class RecipeCard extends HTMLElement {
     this.shadowRoot.appendChild(card);
     this.shadowRoot.appendChild(styleElem);
     
-    //document.getElementsByTagName('main')[0].appendChild(this.shadowRoot);
+    //document.getElementsByTagrecipe_name('main')[0].appendChild(this.shadowRoot);
     
   }
 }
@@ -261,17 +261,17 @@ function getUrl(data) {
 }
 
 /**
- * Similar to getUrl(), this function extracts the organizations name from the
+ * Similar to getUrl(), this function extracts the organizations recipe_name from the
  * schema JSON object. It's not in a standard location so this function helps.
  * @param {Object} data Raw recipe JSON to find the org string of
- * @returns {String} If found, it retuns the name of the org as a string, otherwise null
+ * @returns {String} If found, it retuns the recipe_name of the org as a string, otherwise null
  */
 function getOrganization(data) {
-  if (data.publisher?.name) return data.publisher?.name;
+  if (data.publisher?.recipe_name) return data.publisher?.recipe_name;
   if (data['@graph']) {
     for (let i = 0; i < data['@graph'].length; i++) {
       if (data['@graph'][i]['@type'] == 'Organization') {
-        return data['@graph'][i].name;
+        return data['@graph'][i].recipe_name;
       }
     }
   };
