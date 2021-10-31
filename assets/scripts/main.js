@@ -25,6 +25,8 @@ async function init() {
     return;
   };
   // Add the first three recipe cards to the page
+  console.log(recipeData); //debug
+  console.log('recipe data length: ', Object.keys(recipeData).length);  //debug
   createRecipeCards();
   // Make the "Show more" button functional
   bindShowMore();
@@ -43,6 +45,22 @@ async function fetchRecipes() {
     // in the recipes folder and fetch them from there. You'll need to add their paths to the recipes array.
 
     // Part 1 Expose - TODO
+  for (let i = 0; i < recipes.length; i++){
+    fetch(recipes[i])
+    .then(response => response.json())
+    .then(data => recipeData[recipes[i]] = data)
+    .then(() => {
+      // console.log('recipeData length is ', Object.keys(recipeData).length);
+      // console.log('data in recipeData is: ', recipeData);
+       if(i == 2 && Object.keys(recipeData).length == recipes.length){
+         resolve(true);
+       }
+       else if(i == 2 && Object.keys(recipeData).length != recipes.length){
+       reject(false);
+     }})
+    .catch(error => reject(false));
+  }
+  
   });
 }
 
