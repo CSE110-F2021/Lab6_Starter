@@ -25,11 +25,11 @@ async function init() {
     return;
   };
   // Add the first three recipe cards to the page
-  console.log(recipeData); //debug
+  console.log('data in recipeData is: ', recipeData); //debug
   console.log('recipe data length: ', Object.keys(recipeData).length);  //debug
   createRecipeCards();
   // Make the "Show more" button functional
-  bindShowMore();
+  //bindShowMore();
 }
 
 async function fetchRecipes() {
@@ -73,7 +73,7 @@ function createRecipeCards() {
   for (let i = 0; i < Object.keys(recipeData).length; i++){
     let recipeCard = document.createElement('recipe-card');
     recipeCard.data = recipeData[recipes[i]];
-    let main = document.getElementsByTagName('main');
+    let main = document.querySelector('main');
     main.appendChild(recipeCard);
   }
 }
