@@ -50,8 +50,6 @@ async function fetchRecipes() {
     .then(response => response.json())
     .then(data => recipeData[recipes[i]] = data)
     .then(() => {
-      // console.log('recipeData length is ', Object.keys(recipeData).length);
-      // console.log('data in recipeData is: ', recipeData);
        if(i == 2 && Object.keys(recipeData).length == recipes.length){
          resolve(true);
        }
@@ -72,6 +70,12 @@ function createRecipeCards() {
   // show any others you've added when the user clicks on the "Show more" button.
 
   // Part 1 Expose - TODO
+  for (let i = 0; i < Object.keys(recipeData).length; i++){
+    let recipeCard = document.createElement('recipe-card');
+    recipeCard.data = recipeData[recipes[i]];
+    let main = document.getElementsByTagName('main');
+    main.appendChild(recipeCard);
+  }
 }
 
 function bindShowMore() {
