@@ -6,7 +6,7 @@ const recipes = [
   'https://introweb.tech/assets/json/ghostCookies.json',
   'https://introweb.tech/assets/json/birthdayCake.json',
   'https://introweb.tech/assets/json/chocolateChip.json',
-  "assets/recipes/pumpkin_pie.json",
+  "assets/recipes/pad_see_ew.json",
   "assets/recipes/chili.json",
   "assets/recipes/ramen.json"
 ];
